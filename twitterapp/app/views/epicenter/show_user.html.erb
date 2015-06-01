@@ -1,0 +1,52 @@
+<h1><%= @user.username %></h1>
+<h3><%= @user.location %></h3>
+<h3><%= @user.bio %></h3>
+
+<div class="row">
+    <% @user.tweets.each do |tweet| %>
+     <div class="well well-lg">
+             <strong><%= link_to tweet.user.username, user_profile_path(id: tweet.user.id) %> tweeted <%= time_ago_in_words(tweet.created_at) %> ago</strong><p></p>
+        <%= tweet.message %><p></p>
+        <%= link_to 'Details', tweet %>
+        <% if current_user.id == tweet.user.id %>
+        <%= link_to 'Edit', edit_tweet_path(tweet) %>
+        <%= link_to 'Delete Tweet', tweet, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+        </div>
+
+    <% end %>
+</div>
+
+<% if current_user.id != @user.id %>
+    <% if current_user.following.include?(@user.id) %>
+        <%= form_tag('/unfollow') do %>
+            <div class="cant-see-me">
+                <%= number_field_tag :unfollow_id, @user.id %>
+            </div>
+<%= submit_tag 'Following', class: 'btn btn-primary', id: 'unfollow_btn' %>
+        <% end %>
+    <% else %>
+    <div>
+        <%= form_tag('/now_following') do %>
+        <span class="cant-see-me">
+            <%= text_field_tag :follow_id, @user.id %>
+        </span><br />
+        <%= submit_tag 'Follow', class: 'btn btn-primary' %>
+        <% end %>
+    </div>
+    <% end %>
+<% end %>
+
+<script>
+    $(document).ready(function(){
+        $('#unfollow_btn').hover(function(){
+            $(this).removeClass('btn-primary');
+            $(this).addClass('btn-danger');
+            $(this).attr('value', 'Unfollow');
+        }, function(){
+            $(this).attr('value','Following');
+            $(this).removeClass('btn-danger');
+            $(this).addClass('btn-primary');
+        });
+    });
+</script>

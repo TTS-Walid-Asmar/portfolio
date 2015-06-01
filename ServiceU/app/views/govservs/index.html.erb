@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Govservs</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Service</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @govservs.each do |govserv| %>
+      <tr>
+        <td><%= govserv.service %></td>
+        <td><%= link_to 'Show', govserv %></td>
+        <td><%= link_to 'Edit', edit_govserv_path(govserv) %></td>
+        <td><%= link_to 'Destroy', govserv, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Govserv', new_govserv_path %>

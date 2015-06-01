@@ -1,0 +1,48 @@
+<div class="row">
+<div class="current-user-profile-box col-md-4 panel panel-default">
+    <div class="panel-body">
+        <div class="row">
+        <%= image_tag(current_user.avatar.url(:thumb)) %>
+        <h3><%= current_user.name %></h3>
+        <p><%= current_user.username %></p>
+    </div>
+<div class="row">
+    <div class="col-md-4">
+    <span class="small text">TWEETS</span><br />
+        <%= current_user.tweets.count %>
+    </div>
+        <div class="col-md-4">
+    <span class="small text">FOLLOWING</span><br />
+            <%= current_user.following.length %>
+    </div>
+ <div class="col-md-4">
+    <span class="small text">FOLLOWERS</span><br />
+     <%= @follower_count %>
+    </div>
+    </div>
+</div>
+</div>
+<div class="following-feed-box col-md-7 col-md-offset-1 panel panel-default">
+<div class="panel-body">
+        <div class="well well-lg">
+
+        <%= render 'tweets/form' %>
+</div>
+    <% @following_tweets.each do |f| %>
+    <ul class="list-group">
+<li class="list-group-item">
+    <%= image_tag(f.user.avatar.url(:thumb)) %>
+   <strong><%= link_to f.user.username, user_profile_path(id: f.user.id) %> tweeted <%= time_ago_in_words(f.created_at) %> ago</strong><p></p>
+        <%= f.message %><p></p>
+        <%= link_to 'Details', f %>
+        <% if current_user.id == f.user.id %>
+        <%= link_to 'Edit', edit_f_path(f) %>
+        <%= link_to 'Delete Tweet', f, method: :delete, data: { confirm: 'Are you sure?' } %>
+            <% end %>
+        </li>
+
+    <% end %>
+    </ul>
+    </div>
+  </div>
+</div>

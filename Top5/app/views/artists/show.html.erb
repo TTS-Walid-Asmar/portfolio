@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+<div class="well">
+        <h1><%= @artist.name %></h1>
+            <%= image_tag @artist.avatar.url(:medium) %>
+
+    </div>
+<div class="row">
+  <div class="col-md-12">
+
+          <div class="well well-sm">
+
+        <% @artist.songs.each do |song| %>
+     <div class="play"><h3><%= link_to song.name, song  %></h3><h4><% "#{song.rating}".to_i.times do %>
+            <span class="glyphicon glyphicon-fire"></span>
+            <% end %><span class="glyphicon glyphicon-play-circle"></span></a></h4></div><hr/>
+    <% end %>
+    </div>
+  </div>
+</div>

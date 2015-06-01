@@ -1,0 +1,56 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+.cant-see-me {
+display: none;
+}
+
+body{ background: url(<%= asset_path "twitterbgimage.jpg" %>) no-repeat center center fixed;
+  background-size: cover;
+}
+
+.btn-info {
+margin-top: 11px;
+resize: 32x32px;}
+
+.well {
+  background: rgb(255, 255, 255);
+}
+
+.small-text {
+font-size: .75em}
+
+textarea {
+width: 100%;
+}
+
+.current-user-profile-box.col-md-4.panel.panel-default{
+width: 30%;
+}
+
+.following-feed-box.col-md-7.col-md-offset-1.panel.panel-default{
+width: 65%;
+margin-left: 3%;
+}
+
+.nav {
+height: 10px;}
+
+.tiny-text {
+font-size: .75em}
+
+.list-group-item{
+border-radius: 5px;
+}

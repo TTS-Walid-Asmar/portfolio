@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Top5</title>
+  <%= stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" %>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+ <div class="site-wrapper">
+      <div class="site-wrapper-inner">
+        <div class="cover-container">
+          <div class="masthead clearfix">
+            <div class="inner">
+                <h3 class="masthead-brand"><%= image_tag "Crown_logo.png" %><%= link_to "King PaTi's Playlist", root_path %></h3>
+
+
+                <nav>
+                <ul class="nav masthead-nav">
+                    <li><%= link_to "Your Profile", root_path %></li>
+<!--                    , user_profiles_path(id: current_user.id) -->
+          <li><%= link_to "Artists", artists_path %></li>
+          <li><%= link_to "Songs", songs_path %></li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          <div class="inner cover">
+            <%= yield %>
+          </div>
+
+          <div class="mastfoot">
+            <div class="inner">
+              <p>King PaTi's Top 5</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+</body>
+</html>
