@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+<div class="container">
+    <div class="well home-well">
+    <h1> <%= @job.title %></h1>
+        <p class="text-muted">This job was posted by <%= link_to @job.user.username, @job.user %> <%= local_time_ago @job.created_at %></p>
+
+ <h3><strong>Description:</strong></h3>
+ <h3><%= @job.description %></h3>
+<br>
+    <h4><strong>Contact Info: </strong><%= @job.phone %> | <%= @job.email %></h4>
+</div>
+
+  <% if current_user.id == @job.user.id %>
+
+    <div class="panel-footer">
+<%= link_to 'Edit', edit_job_path(@job), class: "btn btn-warning" %>
+            <% end %>
+</div>
+</div>
+        <%= render partial: "comments/comments", locals: {commentable: @job} %>
+
+<%= render partial: "comments/form", locals: {commentable: @job} %>
+<br>
+
+
+        <%= link_to 'Back', jobs_path, class: "btn btn-success" %>

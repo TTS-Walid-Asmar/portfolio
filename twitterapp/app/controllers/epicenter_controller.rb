@@ -8,6 +8,9 @@ class EpicenterController < ApplicationController
     # We pull in all the tweets...
     @tweets = Tweet.all
 
+      @tweet = Tweet.new
+
+
       @users = User.all
 
       @follower_count = 0
@@ -17,36 +20,26 @@ class EpicenterController < ApplicationController
               current_user.following.each do |f|
                   if tweet.user_id == f
                       @following_tweets.push(tweet)
-
-
-    # Then we sort through the tweets
-    # to find ones asscoiated with
-    # users from the current_user's
-    # following array.
-
-          # And those tweets are pushed
-          # into the @following_tweets array
-          # we added to our view.
-        end
-      end
-    end
+                    end
+                  end
+                end
           @users.each do |user|
               if user.following.include?(current_user.id)
                   @following_count =+1
               end
-      end
+            end
+
       else
           redirect_to_new_user_session_path
-      end
-          @tweet = Tweet.new
-
-  end
+        end
+    end
 
      def search
     if params[:search].present?
         @users = User.search(params[:search])
     else @users = User.all
     end
+  end
 
 
   def show_user
@@ -54,19 +47,14 @@ class EpicenterController < ApplicationController
   end
 
   def now_following
-    # This line is just for display purposes:
+
     @user = User.find(params[:follow_id])
 
-    # Here is where the back-end
-    # work really happens
 
     current_user.following.push(params[:follow_id].to_i)
-    # What we're doing is adding the user.id
-    # of the User you want to follow to your
-    # 'following' array attribute
 
     current_user.save
-    # Then we save it in our database.
+
      redirect_to user_profile_path(id: @user.id)
 
   end
@@ -82,7 +70,4 @@ class EpicenterController < ApplicationController
 
   end
 
-    def js_practice
-    end
-
-end
+  end

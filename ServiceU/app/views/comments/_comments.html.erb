@@ -1,0 +1,9 @@
+<h2>Comments</h2>
+<% commentable.comments.each do |comment| %>
+<div class="panel panel-default">
+        <div class="panel-body">
+            <p class="text-muted">Posted by <%= link_to comment.user.username, comment.user %> <%= local_time_ago comment.created_at %></p>
+            <p><%= comment.body %>
+        </div>
+</div>
+    <% end %>

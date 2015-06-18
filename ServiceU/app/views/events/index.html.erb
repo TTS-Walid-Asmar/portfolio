@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+<div class="pull-right">
+  <%= link_to 'Add a new event!', new_event_path, class: "btn btn-success" %>
+</div>
+<div class="well home-well">
+    <div class= 'panel-heading'>
+        <h1>Events</h1>
+    <div class="well home-well">
+
+<p>These are all the events happening near you!</p>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+      <td>Title</td>
+      <td>Cost</td>
+      <td>Where</td>
+      <td>Start time</td>
+      <td>End time</td>
+               </thead>
+        </tr>
+    <tbody>
+      <% @events.each do |event| %>
+        <tr>
+        <td><%= link_to event.title, event %></td>
+        <td>$<%= link_to event.cost, event %></td>
+        <td><%= link_to event.where, event %></td>
+        <td><%= link_to event.start.strftime("%B %e, %Y at %l:%M %p"), event %></td>
+        <td><%= link_to event.end.strftime("%B %e, %Y at %l:%M %p"), event %></td>
+        </tr>
+        <% end %>
+        </tbody>
+  </table>
+<br>
+<%= link_to 'Home', root_path, class: "btn btn-info" %>

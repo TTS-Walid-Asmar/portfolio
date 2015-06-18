@@ -1,0 +1,48 @@
+<p id="notice"><%= notice %></p>
+
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+          <%= @event.title %>
+        <br>
+        Special Thanks to <%= link_to @event.user.username, @event.user %> for posting this event!
+      </div>
+        <div class="panel-body">
+      <table class="table">
+          <tr>
+      <th>Cost:</th>
+      <th>Where:</th>
+      <th>Start time:</th>
+      <th>End time:</th>
+            </tr>
+        <tbody>
+        <tr>
+            <td>$<%= @event.cost %></td>
+            <td><%= @event.where %></td>
+            <td><%= @event.start.strftime("%B %e, %Y at %l:%M %p") %></td>
+            <td><%= @event.end.strftime("%B %e, %Y at %l:%M %p") %></td>
+            </tr>
+        </tbody>
+        </table>
+          <%= image_tag attachment_url(@event, :event_image, :fill, 300, 300, format: "jpg") %>
+          <br><br>
+          <%= @event.description %>
+
+    </div>
+
+    <% if current_user.id == @event.user.id %>
+
+    <div class="panel-footer">
+ <td><%= link_to 'Edit', edit_event_path(@event), class: "btn btn-warning" %></td>
+       </div>
+            <% end %>
+    </div>
+</div>
+
+<%= render partial: "comments/comments", locals: {commentable: @event} %>
+
+<%= render partial: "comments/form", locals: {commentable: @event} %>
+
+<br>
+
+<%= link_to 'Back', events_path, class: "btn btn-success" %>

@@ -1,0 +1,2 @@
+module AnonsHelper
+end

@@ -1,0 +1,35 @@
+    <%=image_tag("ServiceULogo2.png", alt: "Logo", class: "logo")%>
+<div class="well home-well">
+<h3>What U need &nbsp;&nbsp;When U need it&nbsp;&nbsp;How U want it</h3>
+</div>
+<div class="row">
+<div class="col-md-12">
+
+       <div class="well home-well">
+           <%=link_to jobs_path do %>
+           <h4><%= link_to 'Jobs', jobs_path %></h4>
+           <% end %>
+   </div>
+   <div class="well home-well">
+          <%=link_to forums_path do %>
+          <h4><%= link_to 'Forum', forums_path %></h4>
+          <% end %>
+  </div>
+   <div class="well home-well">
+       <%=link_to events_path do %>
+       <h4><%= link_to 'Events', events_path %></h4>
+       <% end %>
+  </div>
+    <div class="well home-well">
+        <%=link_to inventories_path do %>
+        <h4><%= link_to 'Buy/Sell', categories_path %></h4>
+       <% end %>
+  </div>
+    <div class="well home-well">
+       <%=link_to anons_path do %>
+       <h4><%= link_to 'Anonymous Forum', anons_path %></h4>
+       <% end %>
+  </div>
+   </div>
+</div>
+

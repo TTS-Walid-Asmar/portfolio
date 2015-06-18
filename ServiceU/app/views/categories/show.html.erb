@@ -1,0 +1,15 @@
+<h1 class="page-header"> <%= @category.name %> for sale.</h1>
+<% Inventory.where(category_id: @category.id).each do |inventory| %>
+<div class="row">
+
+    <div class="col-md-6">
+
+        <div class="well lg-well">
+
+<h2><%= link_to inventory.title, inventory %></h2>
+        </div>
+
+    </div>
+
+</div>
+    <% end %>

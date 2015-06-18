@@ -1,0 +1,21 @@
+<h1 class="page-header"><%= @user.name %>'s Profile</h1> <%= image_tag attachment_url(@user, :profile_image, :fill, 300, 300, format: "jpg") %>
+
+<h3 class="page-header">Forums</h3>
+<% @user.forums.each do |forum| %>
+    <h2><%= link_to forum.title, forum %></h2>
+<% end %>
+
+<h3 class="page-header">Events</h3>
+<% @user.events.each do |event| %>
+<h2><%= link_to event.title, event %></h2>
+<% end %>
+
+<h3 class="page-header">Jobs</h3>
+<% @user.jobs.each do |job| %>
+<h2><%= link_to job.title, job %></h2>
+<% end %>
+
+<h3 class="page-header">Items for Sale</h3>
+<% @user.inventories.each do |item| %>
+<h2><%= link_to item.title, item %></h2>
+<% end %>

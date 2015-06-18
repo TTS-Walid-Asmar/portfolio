@@ -1,0 +1,7 @@
+<h1>Editing Inventory</h1>
+
+<%= render 'form' %>
+<%= link_to 'Destroy', @inventory, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+<%= link_to 'Show', @inventory %> |
+<%= link_to 'Back', inventories_path %>

@@ -1,14 +1,24 @@
+<!--In order to keep this page better organized, you'll find that I rendered the navbar from layouts/navbar-->
 <!DOCTYPE html>
 <html>
 <head>
-  <title>ServiceU</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
+  <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+ <title>Serviceu</title>
+ <%= stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"%>
+ <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+ <%= javascript_include_tag "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js" %>
+ <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+ <%= csrf_meta_tags %>
+
+ <link href='http://fonts.googleapis.com/css?family=Trade+Winds|Fredericka+the+Great|Rum+Raisin|Ruslan+Display|Walter+Turncoat|Monoton|Orbitron|Architects+Daughter|Kaushan+Script|Rock+Salt|Slackey|Freckle+Face|Ranchers|Joti+One|Risque' rel='stylesheet' type='text/css'>
+     <link href='http://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
+    </head>
 <body>
-
+    <%= render 'layouts/navbar' %>
+<div class="container">
 <%= yield %>
-
+</div>
 </body>
 </html>

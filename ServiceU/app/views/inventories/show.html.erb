@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+          <%= @inventory.title %>
+        <br>
+        This product is being sold by <%= link_to @inventory.user.username, @inventory.user  %> and was posted on <%= local_time_ago @inventory.created_at %>!
+    </div>
+      <div class="panel-body">
+    <table class="table">
+        <tr>
+      <th>Price:</th>
+      <th>Condition:</th>
+            </tr>
+        <tbody>
+        <tr>
+            <td>$<%= @inventory.price %></td>
+            <td><%= @inventory.condition %></td>
+            </tr>
+        </tbody>
+        </table>
+        <%= image_tag attachment_url(@inventory, :item_image, :fill, 300, 300, format: "jpg") %>
+        <br><br>
+        <%= @inventory.description %>
+    </div>
+
+    <% if current_user.id == @inventory.user.id %>
+
+    <div class="panel-footer">
+ <td><%= link_to 'Edit', edit_inventory_path(@inventory), class: "btn btn-warning" %></td>
+       </div>
+            <% end %>
+    </div>
+</div>
+<%= render partial: "comments/comments", locals: {commentable: @inventory} %>
+
+<%= render partial: "comments/form", locals: {commentable: @inventory} %>
+<br>
+<%= link_to 'Back', inventories_path, class: "btn btn-success" %>

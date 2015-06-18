@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+ <div class="pull-right">
+<%= link_to 'New Inventory', new_inventory_path, class: "btn btn-success" %>
+  </div>
+</div>
+<h1 class="page-header">Items for sale!</h1>
+    <% @inventories.each do |inventory| %>
+<h3><%= link_to inventory.title, inventory %></h3>
+  <% end %>
+<br>
+
+  <%= link_to 'Home', root_path, class: "btn btn-info" %>

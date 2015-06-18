@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<h1 class="page-header"><%= @forum.title %></h1>
+<p class="text-muted">Created by <%= link_to @forum.user.username, @forum.user %> on <%= local_time_ago @forum.created_at %></p>
+<%= @forum.body %>
+
+<br>
+<br>
+<% if current_user.id == @forum.user.id %>
+<%= link_to 'Edit', edit_forum_path(@forum), class: "btn btn-warning" %>
+<% end %>
+
+
+<%= render partial: "comments/comments", locals: {commentable: @forum} %>
+
+<%= render partial: "comments/form", locals: {commentable: @forum} %>
+<br>
+
+<%= link_to 'Back', forums_path, class: "btn btn-success" %>
